@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MergeSortedArrays {
     /**
      * Problem: Merge Two Sorted Arrays
@@ -23,7 +25,28 @@ public class MergeSortedArrays {
      */
     public int[] mergeSortedArrays(int[] arr1, int[] arr2) {
         // Write your solution here
-        return new int[]{};
+        int first = 0;
+        int second = 0;
+        int index = 0;
+        int[] mergedSortedArray = new int[arr1.length+arr2.length];
+
+        while(first < arr1.length && second < arr2.length) {
+            if(arr1[first] <= arr2[second]) {
+                mergedSortedArray[index ++] = arr1[first ++];
+            } else {
+                mergedSortedArray[index ++] = arr2[second ++];
+            }
+        }
+
+        while(first < arr1.length) {
+            mergedSortedArray[index ++] = arr1[first ++];
+        }
+
+        while(second < arr2.length) {
+            mergedSortedArray[index ++] = arr2[second ++];
+        }
+
+        return mergedSortedArray;
     }
 
     // Test cases
